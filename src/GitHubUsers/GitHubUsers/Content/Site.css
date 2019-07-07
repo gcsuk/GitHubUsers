@@ -1,0 +1,113 @@
+﻿/* Mobile first, overridden by media query at the bottom for desktop */
+
+#site {
+    display: grid;
+    grid-template-rows: 50px 50px auto;
+}
+
+header {
+    grid-column: 1 / 3;
+    background-color: rgb(81, 81, 99);
+    align-content: center;
+    text-align: right;
+    padding: 10px 20px;
+}
+
+    header a {
+        color: #fff;
+        font-size: 1.2rem;
+        text-align: center;
+        margin: 15px 10px;
+    }
+
+main {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+}
+
+#search form {
+    border-bottom: solid 1px #000;
+    height: 100%;
+    padding: 10px;
+}
+
+    #search form input[type=text] {
+        display: block;
+        margin: 10px 0;
+    }
+
+    #search form input[type=submit] {
+        padding: 5px;
+        margin: 5px 0;
+        border: solid 1px #000;
+        background-color: #75bef2;
+    }
+
+#results {
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-columns: 200px auto;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+    #results #userDetails {
+        text-align: center;
+    }
+
+        #results #userDetails img {
+            margin-bottom: 5px;
+            max-width: 175px;
+        }
+
+    #results #repositories {
+        grid-column: 2 / 3;
+    }
+
+        #results #repositories h2 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        #results #repositories li {
+            padding: 5px;
+        }
+
+        #results #repositories li:nth-child(odd) {
+            background-color: #c0f1ff;
+        }
+
+#validationErrors li {
+    color: #f00;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 10px;
+    border: solid 1px #000;
+}
+
+@media (min-width: 48em) {
+    #home {
+        display: grid;
+        grid-template-rows: 50px auto;
+    }
+
+    #search form {
+        display: grid;
+        grid-template-columns: 100px 200px 100px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+        #search form input[type=text] {
+            grid-column: 2 / 3;
+            padding: 5px;
+            margin: 0;
+        }
+
+        #search form input[type=submit] {
+            grid-column: 3 / 4;
+            margin: 0 5px;
+        }
+}

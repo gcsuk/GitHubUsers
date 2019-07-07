@@ -1,0 +1,45 @@
+﻿@model GitHubUsers.ViewModels.UserResponseVM
+@{
+    ViewBag.Title = "User Search";
+}
+<div id="home">
+    <div id="search">
+        <form action="/" method="post">
+            @Html.LabelFor(x => x.Username)
+            @Html.TextBoxFor(x => x.Username)
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+    <div id="results">
+        @if (!string.IsNullOrWhiteSpace(Model.Name))
+        {
+            <div id="userDetails">
+                <img src="@Model.AvatarUrl" alt="@(Model.Name)'s Avatar" />
+                <div>
+                    <label>Username: </label>
+                    <span>@Model.Username</span>
+                </div>
+                <div>
+                    <label>Name: </label>
+                    <span>@Model.Name</span>
+                </div>
+                <div>
+                    <label>Location: </label>
+                    <span>@Model.Location</span>
+                </div>
+            </div>
+            <div id="repositories">
+                <h2>Repositories</h2>
+                <ul>
+                    @foreach (var repo in Model.Repositories)
+                    {
+                        <li><a href="@repo.Url" target="_blank">@repo.Name</a></li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+<div id="validationErrors">
+    @Html.ValidationSummary()
+</div>
