@@ -33,21 +33,4 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Create Artifacts'
-  inputs:
-    command: publish
-    publishWebProjects: True
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
-- task: CopyFiles@2
-  displayName: 'Copy Files'
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: '**\bin\$(BuildConfiguration)\**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
-  displayName: Publish Artifacts
-  inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: 'GitHubUsers'
